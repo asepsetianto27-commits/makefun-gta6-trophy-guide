@@ -3,23 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Platinum — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="Offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: checklist, roadmap to the platinum, missable flags, and a cited guide for every trophy.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header id="top">
+  <div class="masthead">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+    <h1>Leonida Platinum</h1>
+    <p class="sub">The offline trophy guide &amp; tracker. Every trophy with its official name, description and grade, a guide in our own words with its sources, a roadmap to the platinum, and one flagged missable.</p>
+  </div>
+  <section id="progress-panel" aria-label="Progress">
+    <div class="big-count"><span id="earned-count">0</span><span class="of">/ 55 earned</span></div>
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progress-bar"><div id="progress-fill"></div></div>
+    <p id="grade-counts" class="grade-counts"></p>
+    <p id="next-up" class="next-up"></p>
+  </section>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<nav id="controls" aria-label="Tracker controls">
+  <div class="control-row">
+    <label class="search-label">Search <input id="search" type="search" placeholder="Trophy, mission, or keyword…" autocomplete="off"></label>
+    <label class="grade-label">Grade
+      <select id="grade">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label class="spoiler-label"><input id="spoiler" type="checkbox"> Hide story spoilers</label>
+  </div>
+  <div class="control-row" id="kind-chips" role="group" aria-label="Filter by kind">
+    <button type="button" class="chip active" data-kind="all">All <span class="chip-n" id="n-all"></span></button>
+    <button type="button" class="chip" data-kind="story">Story <span class="chip-n" id="n-story"></span></button>
+    <button type="button" class="chip" data-kind="missable">Missable <span class="chip-n" id="n-missable"></span></button>
+    <button type="button" class="chip" data-kind="collectibles">Collectibles <span class="chip-n" id="n-collectibles"></span></button>
+    <button type="button" class="chip" data-kind="activities">Activities <span class="chip-n" id="n-activities"></span></button>
+    <button type="button" class="chip" data-kind="online">Online <span class="chip-n" id="n-online"></span></button>
+  </div>
+  <div class="control-row">
+    <button id="export" type="button">Export progress</button>
+    <label class="import-btn">Import progress <input id="import" type="file" accept="application/json,.json"></label>
+    <button id="reset" type="button" class="danger">Reset progress</button>
+    <span id="save-note" class="save-note">Progress saves in this browser automatically.</span>
+  </div>
+</nav>
+
+<section id="roadmap" aria-label="Roadmap to the platinum">
+  <h2>Roadmap to the platinum</h2>
+  <p class="section-note">Built from the official trophy descriptions. One playthrough is enough, about 200 hours all in (PowerPyx: 4/10 difficulty), and there is no mission replay — so keep a manual save at the start and end of each chapter. The 100% checklist stays hidden until after the story, but everything you do during the story already counts toward it.</p>
+  <div id="roadmap-stages" class="stages"></div>
+</section>
+
+<section id="missables" aria-label="Missable trophies">
+  <h2>Missable trophies</h2>
+  <p class="section-note">Only one trophy is reported as possibly missable. Everything else can be mopped up in free-roam after the story — all trophy-related quest givers are still available then (PowerPyx). Cheats disable trophies and saving, so keep a trophy run cheat-free.</p>
+  <div id="missable-list" class="missable-list"></div>
+</section>
+
+<main>
+  <div class="list-head">
+    <h2 id="list-heading">Trophy checklist</h2>
+    <p id="list-count" class="list-count"></p>
+  </div>
+  <div id="trophy-list" class="trophy-list"></div>
+  <p id="empty-note" class="empty-note" hidden>No trophies match these filters.</p>
+</main>
+
+<footer id="about">
+  <h2>How this guide was built</h2>
+  <p>Names, descriptions and grades are the official PlayStation 5 list as published on Exophase and PSNProfiles (55 trophies: 1 platinum, 2 gold, 6 silver, 46 bronze; 28 hidden until earned; no online trophies). Each guide is written for this entry in our own words from the official description, and names its sources beside it — a source is cited, never copied. Where a description is vague, the guide says so instead of inventing a step. Roadmap order and the missable flag come from the official descriptions plus the early published guide by PowerPyx. No Rockstar logo, artwork or game screenshot is used: the look is our own.</p>
+  <p class="source-line">Sources: <a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase — GTA VI trophy list</a> &middot; <a href="https://psnprofiles.com/trophies/43531-grand-theft-auto-vi">PSNProfiles — GTA VI trophies</a> &middot; <a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx — GTA 6 Trophy Guide &amp; Roadmap</a></p>
+  <p class="offline-note">This guide is a static offline app: it loads only its own files, makes no network request, and your progress never leaves your browser unless you export it.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
